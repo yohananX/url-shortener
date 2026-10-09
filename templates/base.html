@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Shrinkr · URL Shortener{% endblock %}</title>
+  <style>
+    :root {
+      --bg: #f4f5f7;
+      --surface: #ffffff;
+      --ink: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #2563eb;
+      --accent-ink: #ffffff;
+      --danger: #b91c1c;
+      --danger-bg: #fef2f2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    header { width: 100%; max-width: 680px; margin: 0 auto; padding: 1.5rem 1.25rem 0; }
+    header a { color: var(--ink); text-decoration: none; font-weight: 700; letter-spacing: -0.02em; font-size: 1.05rem; }
+    main { flex: 1; width: 100%; max-width: 680px; margin: 0 auto; padding: 3rem 1.25rem; }
+    h1 { font-size: clamp(2rem, 5vw, 2.75rem); line-height: 1.1; letter-spacing: -0.03em; margin: 0 0 .5rem; }
+    p.lede { color: var(--muted); margin: 0 0 2rem; font-size: 1.05rem; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 2px rgba(16, 24, 40, .04);
+    }
+    label {
+      display: block;
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin-bottom: .4rem;
+    }
+    label .plain { text-transform: none; letter-spacing: 0; font-weight: 400; }
+    input {
+      width: 100%;
+      padding: .75rem .9rem;
+      font: inherit;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+    input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+    .field { margin-bottom: 1.1rem; }
+    button, .btn {
+      display: inline-block;
+      font: inherit;
+      font-weight: 600;
+      padding: .75rem 1.4rem;
+      border: 0;
+      border-radius: 10px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      cursor: pointer;
+      text-decoration: none;
+    }
+    button:hover, .btn:hover { filter: brightness(1.08); }
+    .error {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid #fecaca;
+      border-radius: 10px;
+      padding: .75rem 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .result { margin-top: 1.5rem; }
+    .short { display: block; font-size: 1.3rem; font-weight: 700; word-break: break-all; }
+    .short a { color: var(--accent); text-decoration: none; }
+    .short a:hover { text-decoration: underline; }
+    .meta { color: var(--muted); font-size: .875rem; margin-top: .5rem; word-break: break-all; }
+    .empty { text-align: center; }
+    footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 2rem 1rem; }
+  </style>
+</head>
+<body>
+  <header><a href="{{ url_for('index') }}">Shrinkr</a></header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer>Flask + SQLite · no trackers, no database server</footer>
+</body>
+</html>

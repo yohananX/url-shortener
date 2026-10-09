@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}404 · Shrinkr{% endblock %}
+
+{% block content %}
+  <div class="card empty">
+    <h1>404</h1>
+    <p class="lede">That short link doesn't exist. It may have been mistyped, or the link was never created.</p>
+    <a class="btn" href="{{ url_for('index') }}">Back to the homepage</a>
+  </div>
+{% endblock %}
